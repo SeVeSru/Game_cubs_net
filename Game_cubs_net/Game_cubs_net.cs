@@ -2,7 +2,7 @@
 
 namespace Game_cubs_net
 {
-    public class Game_cubs_net
+    public class Game_cubs
     {
         const int x = 6; //Размер поля
         const int y = 6;
@@ -51,7 +51,7 @@ namespace Game_cubs_net
             Console.WriteLine("игра закончилась");
             Console.ReadKey();
         }
-        static void PoleOut()
+        public static void PoleOut()
         {
             player1win = 0;
             player2win = 0;
@@ -80,7 +80,7 @@ namespace Game_cubs_net
             }
         }
 
-        static void InterfaceMove(int player, int rx, int ry)
+        public static void InterfaceMove(int player, int rx, int ry)
         {
             int x1, y1;
             Console.Clear();
@@ -129,7 +129,7 @@ namespace Game_cubs_net
             }
             catch { }
         }
-        static bool CheckPole(int player, int rx, int ry)
+        public static bool CheckPole(int player, int rx, int ry)
         {
             try
             {
