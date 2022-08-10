@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Game_cubs
+namespace Game_cubs_net
 {
-    internal class Program
+    public class Game_cubs_net
     {
         const int x = 6; //Размер поля
         const int y = 6;

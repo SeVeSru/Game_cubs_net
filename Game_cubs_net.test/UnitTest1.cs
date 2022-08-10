@@ -6,6 +6,8 @@ namespace Game_cubs_net.test
         [TestMethod]
         public void TestMethod1()
         {
+            Game_cubs_net gcn = new Game_cubs_net();
+
         }
     }
 }
