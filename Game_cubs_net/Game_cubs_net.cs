@@ -4,22 +4,22 @@ namespace Game_cubs_net
 {
     public class Game_cubs
     {
-        const int x = 6; //Размер поля
-        const int y = 6;
+        static int x = 6; //Размер поля
+        static int y = 6;
         const string player1Str = "O ";//Метка игрока 1
         const string player2Str = "X ";//Метка игрока 2
         const string fieldStr = "# ";//Метка пустого поля
-        static int[,] Pole = new int[x, y];
+        static int[,] Pole = new int[x,y];
         static int round = 0;
-        const int maxvin = x * y;
         static int polewin = 0;
         static int player1win = 0;
         static int player2win = 0;
 
         static void Main(string[] args)
         {
+            LevlSize();
             bool win = true;
-            Random random = new Random();
+            Random random = new();
 
             for (int i = 0; i < x; i++)
             {
@@ -156,6 +156,56 @@ namespace Game_cubs_net
             }
             Console.WriteLine("Позиция не прилигает к вашей территории");
             return true;
+        }
+
+        public static void LevlSize()
+        {
+            Console.WriteLine("Выберите желаемый размер поля");
+            Console.WriteLine("1. Маленький (6х6)");
+            Console.WriteLine("2. Средний (12х12)");
+            Console.WriteLine("3. Большой (24х24)");
+            Console.WriteLine("4. Свой размер");
+            Console.WriteLine("0. Выход");
+
+            switch (Console.ReadKey().Key)
+            {
+                default:
+                case ConsoleKey.D1:
+                case ConsoleKey.NumPad1:
+                    break;
+                case ConsoleKey.D2:
+                case ConsoleKey.NumPad2:
+                    x = 12;
+                    y = 12;
+                    Pole = new int[x, y];
+                    break;
+                case ConsoleKey.D3:
+                case ConsoleKey.NumPad3:
+                    x = 24;
+                    y = 24;
+                    Pole = new int[x, y];
+                    break;
+                case ConsoleKey.D4:
+                case ConsoleKey.NumPad4:
+                    Console.Write("\nx(Вертикально): ");
+                    while (!int.TryParse(Console.ReadLine(), out x))
+                    {
+                        Console.Write("Введено не число!\nx(Вертикально): ");
+                    }
+                    Console.Write("\ny(Горизантально): ");
+                    while (!int.TryParse(Console.ReadLine(), out y))
+                    {
+                        Console.Write("Введено не число!\ny(Горизантально): ");
+                    }
+                    Pole = new int[x, y];
+                    Console.ReadKey();
+                    break;
+                case ConsoleKey.D0:
+                case ConsoleKey.NumPad0:
+                    Environment.Exit(0);
+                    break;
+            }
+
         }
     }
 }
